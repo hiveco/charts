@@ -29,6 +29,9 @@ controller:
     hostPorts:
       http: 80
       https: 443
+      # Other tcp and udp services
+      # <port>-tcp: <port>
+      # <port>-udp: <port>
 
   ## Required only if defaultBackend.enabled = false
   ## Must be <namespace>/<service_name>
