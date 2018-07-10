@@ -14,6 +14,10 @@ image:
   tag: 0.11.29
   pullPolicy: IfNotPresent
 
+## Wait this many seconds before running ready and liveness probes.
+##
+initialDelaySeconds: 30
+
 service:
   ## Override the components name (defaults to service).
   ##
@@ -92,6 +96,11 @@ service:
     ## Mail notification
     ##
     serviceEnableNotifyMail: false
+
+    ## Use these when there's a reverse proxy in front of gogs.
+    ##
+    serviceEnableReverseProxyAuthentication: false
+    serviceEnableReverseProxyAutoRegistration: false
 
     ## Either "memory", "redis", or "memcache", default is "memory"
     ##
@@ -181,6 +190,11 @@ service:
     ## Change this value for your installation.
     ##
     securitySecretKey: "changeme"
+
+    ## When there's a reverse proxy in front of gogs, set this to the HTTP
+    ## authentication header this proxy stores the user ID in.
+    ##
+    securityReverseProxyAuthenticationUser: "X-WEBAUTH-USER"
 
     ## Number of repositories that are showed in one explore page
     ##

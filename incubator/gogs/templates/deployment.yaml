@@ -27,10 +27,12 @@ spec:
             httpGet:
               path: /
               port: 3000
+            initialDelaySeconds: {{ .Values.initialDelaySeconds }}
           readinessProbe:
             httpGet:
               path: /
               port: 3000
+            initialDelaySeconds: {{ .Values.initialDelaySeconds }}
           env:
             # https://github.com/gogits/gogs/tree/master/docker#container-options
             - name: SOCAT_LINK

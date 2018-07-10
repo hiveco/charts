@@ -36,8 +36,8 @@ data:
     DISABLE_REGISTRATION = {{ .Values.service.gogs.serviceDisableRegistration }}
     REQUIRE_SIGNIN_VIEW = {{ .Values.service.gogs.serviceRequireSignInView }}
     ENABLE_NOTIFY_MAIL = {{ .Values.service.gogs.serviceEnableNotifyMail }}
-    ENABLE_REVERSE_PROXY_AUTHENTICATION = false
-    ENABLE_REVERSE_PROXY_AUTO_REGISTRATION = false
+    ENABLE_REVERSE_PROXY_AUTHENTICATION = {{ .Values.service.gogs.serviceEnableReverseProxyAuthentication }}
+    ENABLE_REVERSE_PROXY_AUTO_REGISTRATION = {{ .Values.service.gogs.serviceEnableReverseProxyAutoRegistration }}
 
     [database]
     DB_TYPE = {{ .Values.service.gogs.databaseType | quote }}
@@ -49,6 +49,7 @@ data:
     [security]
     INSTALL_LOCK = true
     SECRET_KEY = {{ default "" .Values.service.gogs.securitySecretKey | b64enc | quote }}
+    REVERSE_PROXY_AUTHENTICATION_USER = {{ .Values.service.gogs.securityReverseProxyAuthenticationUser }}
 
     [ui]
     EXPLORE_PAGING_NUM = {{ .Values.service.gogs.uiExplorePagingNum }}
@@ -74,4 +75,3 @@ data:
     SHOW_FOOTER_BRANDING = {{ .Values.service.gogs.otherShowFooterBranding }}
     SHOW_FOOTER_VERSION = {{ .Values.service.gogs.otherShowFooterVersion }}
     SHOW_FOOTER_TEMPLATE_LOAD_TIME = {{ .Values.service.gogs.otherShowFooterTemplateLoadTime }}
-
